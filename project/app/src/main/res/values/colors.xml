@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#cb1932</color>
+    <color name="colorPrimaryDark">#92000c</color>
+    <color name="colorAccent">#616161</color>
+    <color name="colorGhostWhite">#f8f8ff</color>
+
+    <color name="beefOverlay">#aaD32F2F</color>
+    <color name="chickenOverlay">#aaFF5722</color>
+    <color name="dessertOverlay">#aa795548</color>
+    <color name="lambOverlay">#aa494949</color>
+    <color name="miscellaneousOverlay">#aa1565c0</color>
+    <color name="porkOverlay">#aac51162</color>
+    <color name="seafoodOverlay">#aaea80fc</color>
+    <color name="sideOverlay">#aa00838f</color>
+    <color name="starterOverlay">#aafbc02d</color>
+    <color name="veganOverlay">#aab2ff59</color>
+    <color name="vegetarianOverlay">#aa4caf50</color>
+    <color name="breakfastOverlay">#aaffd740</color>
+    <color name="goatOverlay">#aadd2c00</color>
+
+    <color name="beefBase">#D32F2F</color>
+    <color name="chickenBase">#FF5722</color>
+    <color name="dessertBase">#795548</color>
+    <color name="lambBase">#494949</color>
+    <color name="miscellaneousBase">#1565c0</color>
+    <color name="porkBase">#c51162</color>
+    <color name="seafoodBase">#ea80fc</color>
+    <color name="sideBase">#00838f</color>
+    <color name="starterBase">#fbc02d</color>
+    <color name="veganBase">#b2ff59</color>
+    <color name="vegetarianBase">#4caf50</color>
+    <color name="breakfastBase">#ffd740</color>
+    <color name="goatBase">#dd2c00</color>
+
 </resources>
