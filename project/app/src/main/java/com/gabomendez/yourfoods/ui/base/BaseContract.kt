@@ -1,9 +1,8 @@
-package com.gabomendez.yourfoods.ui
+package com.gabomendez.yourfoods.ui.base
 
-class BaseContract {
+interface BaseContract {
 
     interface BaseView{
-        fun isActive(): Boolean
     }
 
     interface BasePresenter <in T : BaseView> {

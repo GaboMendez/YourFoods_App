@@ -1,7 +1,8 @@
 package com.gabomendez.yourfoods.ui.food
 
 import com.gabomendez.yourfoods.model.Food
-import com.gabomendez.yourfoods.ui.BaseContract
+import com.gabomendez.yourfoods.ui.base.BaseContract
+
 
 class FoodContract {
 
@@ -10,6 +11,7 @@ class FoodContract {
         fun hideProgress()
         fun onDomainSuccess(foods: MutableList<Food>)
         fun onDomainError(msg: String)
+        fun retryRequest()
     }
 
     interface Presenter: BaseContract.BasePresenter<View>  {

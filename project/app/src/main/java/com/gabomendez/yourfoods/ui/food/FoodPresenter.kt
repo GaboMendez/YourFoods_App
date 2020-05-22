@@ -7,17 +7,17 @@ import com.gabomendez.yourfoods.api.ServiceBuilder
 import com.gabomendez.yourfoods.model.Food
 import com.gabomendez.yourfoods.model.FoodResponse
 import io.reactivex.disposables.CompositeDisposable
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class FoodPresenter: FoodContract.Presenter {
 
-    private val retService: ApiService =  ServiceBuilder.buildService(ApiService::class.java)
-    private val subscriptions = CompositeDisposable()
-    private val listFoods = mutableListOf<Food>()
     private lateinit var view: FoodContract.View
+    private val retService: ApiService =  ServiceBuilder.buildService(ApiService::class.java)
+    private val listFoods = mutableListOf<Food>()
+    private val subscriptions = CompositeDisposable()
+    var isRepeatingError = false
 
     override fun getData() {
         for (number in 0..9){
@@ -41,7 +41,10 @@ class FoodPresenter: FoodContract.Presenter {
                 }
 
                 override fun onFailure(call: Call<FoodResponse>, t: Throwable) {
-                    view.onDomainError(t.message.toString())
+                    if (!isRepeatingError)
+                        view.onDomainError(t.message.toString())
+
+                    isRepeatingError = true
                 }
             })
         }
@@ -59,7 +62,7 @@ class FoodPresenter: FoodContract.Presenter {
     }
 
     override fun attach(view: FoodContract.View) {
-        this.view=view
+        this.view = view
     }
 
 
