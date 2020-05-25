@@ -14,7 +14,8 @@ import com.gabomendez.yourfoods.api.ApiService
 import com.gabomendez.yourfoods.model.Food
 import kotlinx.android.synthetic.main.activity_food.*
 
-class FoodActivity : AppCompatActivity(), FoodFragment.OnItemClickListener {
+@Suppress("UNREACHABLE_CODE")
+class FoodActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,39 +33,4 @@ class FoodActivity : AppCompatActivity(), FoodFragment.OnItemClickListener {
                 .commit()
         }
     }
-
-    override fun onItemClicked(food: Food) {
-        TODO("Not yet implemented")
-    }
-/*
-    override fun showProgress() {
-        loadingBar.visibility = View.VISIBLE
-    }
-
-    override fun hideProgress() {
-        loadingBar.visibility = View.GONE
-    }
-
-    override fun onDomainSuccess(foods: MutableList<Food>) {
-        hideProgress()
-        recyclerFood.visibility = View.VISIBLE
-
-        val foodAdapter = FoodAdapter(foods)
-        recyclerFood.apply {
-            layoutManager = GridLayoutManager(this.context, 2)
-            adapter = foodAdapter
-            (recyclerFood.adapter as FoodAdapter).notifyDataSetChanged()
-        }
-
-        //val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        //recyclerFood.adapter = adapter
-        //recyclerFood.layoutManager = layoutManager
-        //(recyclerFood.adapter as FoodAdapter).notifyDataSetChanged()
-    }
-
-    override fun onDomainError(msg: String) {
-        Toast.makeText(this,msg, Toast.LENGTH_LONG).show()
-    }
-
-*/
 }

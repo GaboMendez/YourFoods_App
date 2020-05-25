@@ -21,7 +21,6 @@ import java.lang.IllegalArgumentException
 
 class FoodFragment : Fragment(), FoodContract.View {
 
-    private lateinit var clickListener: OnItemClickListener
     private lateinit var presenter: FoodPresenter
 
     val foodList: RecyclerView by lazy {
@@ -32,7 +31,7 @@ class FoodFragment : Fragment(), FoodContract.View {
 
     val foodAdapter: FoodAdapter by lazy {
         val adapter = FoodAdapter() { item, position ->
-            clickListener.onItemClicked(item)
+            onFoodTapped(item)
         }
         adapter
     }
@@ -52,15 +51,6 @@ class FoodFragment : Fragment(), FoodContract.View {
         layoutError.btnTryAgain.setOnClickListener { retryRequest() }
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        if (context is OnItemClickListener)
-            clickListener = context
-        else
-            throw IllegalArgumentException("Activity doesn't implement CharacterFragment.OnItemClickListener")
-    }
-
     override fun showProgress() {
         loadingBar.visibility = View.VISIBLE
     }
@@ -74,6 +64,10 @@ class FoodFragment : Fragment(), FoodContract.View {
         showProgress()
         presenter.isRepeatingError = false
         presenter.getData()
+    }
+
+    override fun onFoodTapped(food: Food) {
+        println()
     }
 
     override fun onDomainSuccess(foods: MutableList<Food>) {
@@ -100,11 +94,5 @@ class FoodFragment : Fragment(), FoodContract.View {
             }
         }
     }
-
-    //Interface
-    interface OnItemClickListener{
-        fun onItemClicked(food: Food)
-    }
-
 
 }

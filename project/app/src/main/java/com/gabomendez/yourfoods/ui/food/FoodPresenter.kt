@@ -50,10 +50,6 @@ class FoodPresenter: FoodContract.Presenter {
         }
     }
 
-    override fun onLoadFoodTapped() {
-        TODO("Not yet implemented")
-    }
-
     override fun subscribe() {
     }
 

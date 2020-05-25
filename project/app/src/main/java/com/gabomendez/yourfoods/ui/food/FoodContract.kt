@@ -9,6 +9,7 @@ class FoodContract {
     interface View: BaseContract.BaseView{
         fun showProgress()
         fun hideProgress()
+        fun onFoodTapped(food: Food)
         fun onDomainSuccess(foods: MutableList<Food>)
         fun onDomainError(msg: String)
         fun retryRequest()
@@ -17,7 +18,6 @@ class FoodContract {
     interface Presenter: BaseContract.BasePresenter<View>  {
         fun getData()
         fun getFood()
-        fun onLoadFoodTapped()
     }
 
 }
