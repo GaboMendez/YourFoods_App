@@ -11,6 +11,7 @@ import com.gabomendez.yourfoods.R
 import com.gabomendez.yourfoods.adapter.CategoryAdapter
 import com.gabomendez.yourfoods.model.Category
 import kotlinx.android.synthetic.main.fragment_category.*
+import kotlinx.android.synthetic.main.item_error.view.*
 
 class CategoryFragment : Fragment(), CategoryContract.View {
 
@@ -35,7 +36,13 @@ class CategoryFragment : Fragment(), CategoryContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        println()
+
+        showProgress()
+        presenter = CategoryPresenter()
+        presenter.attach(this)
+        presenter.getData()
+
+        layoutError.btnTryAgain.setOnClickListener { retryRequest() }
     }
 
     override fun showProgress() {
