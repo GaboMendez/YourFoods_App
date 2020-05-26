@@ -14,7 +14,6 @@ import com.gabomendez.yourfoods.api.ApiService
 import com.gabomendez.yourfoods.model.Food
 import kotlinx.android.synthetic.main.activity_food.*
 
-@Suppress("UNREACHABLE_CODE")
 class FoodActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
