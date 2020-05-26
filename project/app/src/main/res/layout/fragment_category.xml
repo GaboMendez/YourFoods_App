@@ -17,7 +17,7 @@
         android:visibility="invisible" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerFood"
+        android:id="@+id/recyclerCategory"
         android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
