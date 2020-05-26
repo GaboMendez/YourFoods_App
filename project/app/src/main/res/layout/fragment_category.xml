@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorGhostWhite">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Hello Category"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="24sp" />
+    <include
+        android:id="@+id/loadingBar"
+        layout="@layout/loading"
+        android:visibility="invisible" />
+
+    <include
+        android:id="@+id/layoutError"
+        layout="@layout/item_error"
+        android:visibility="invisible" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerFood"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_category" />
 </FrameLayout>

@@ -1,44 +1,16 @@
 package com.gabomendez.yourfoods.model
 
 import com.gabomendez.yourfoods.R
-import com.google.gson.annotations.SerializedName
 
-data class FoodResponse(
-    @SerializedName("meals")
-    val results: MutableList<Food>
+data class CategoryResponse(
+    val categories: MutableList<Category>
 )
 
-data class Food (
-    val idMeal : Int = 0,
-    val strMeal : String? = null,
-    val strDrinkAlternate : String? = null,
+data class Category (
+    val idCategory : Int = 0,
     val strCategory : String? = null,
-    val strArea : String? = null,
-    val strInstructions : String? = null,
-    val strMealThumb : String? = null,
-    val strTags : String? = null,
-    val strYoutube : String? = null,
-    val strIngredient1 : String? = null,
-    val strIngredient2 : String? = null,
-    val strIngredient3 : String? = null,
-    val strIngredient4 : String? = null,
-    val strIngredient5 : String? = null,
-    val strIngredient6 : String? = null,
-    val strIngredient7 : String? = null,
-    val strIngredient8 : String? = null,
-    val strIngredient9 : String? = null,
-    val strIngredient10 : String? = null,
-    val strMeasure1 : String? = null,
-    val strMeasure2 : String? = null,
-    val strMeasure3 : String? = null,
-    val strMeasure4 : String? = null,
-    val strMeasure5 : String? = null,
-    val strMeasure6 : String? = null,
-    val strMeasure7 : String? = null,
-    val strMeasure8 : String? = null,
-    val strMeasure9 : String? = null,
-    val strMeasure10 : String? = null,
-    val strSource : String? = null
+    val strCategoryThumb : String? = null,
+    val strCategoryDescription : String? = null
 ) {
     companion object {
         private val DEFAULT_PALETTE = arrayOf(R.color.beefOverlay, R.color.beefBase)
@@ -72,5 +44,6 @@ data class Food (
             val palette = colors[category]
             return palette ?: DEFAULT_PALETTE
         }
+
     }
 }

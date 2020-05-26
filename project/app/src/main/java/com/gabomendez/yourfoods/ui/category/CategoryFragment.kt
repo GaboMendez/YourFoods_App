@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.gabomendez.yourfoods.R
+import kotlinx.android.synthetic.main.fragment_category.*
 
 class CategoryFragment : Fragment(), CategoryContract.View {
 
@@ -19,11 +20,11 @@ class CategoryFragment : Fragment(), CategoryContract.View {
     }
 
     override fun showProgress() {
-        TODO("Not yet implemented")
+        loadingBar.visibility = View.VISIBLE
     }
 
     override fun hideProgress() {
-        TODO("Not yet implemented")
+        loadingBar.visibility = View.INVISIBLE
     }
 
     override fun retryRequest() {

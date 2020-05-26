@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         btnMain.setOnClickListener {
-            val intent = Intent(this, FoodActivity::class.java)
+            val intent = Intent(this, CategoryActivity::class.java)
             startActivity(intent)
         }
     }
