@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#92000c</color>
     <color name="colorAccent">#616161</color>
     <color name="colorGhostWhite">#f8f8ff</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBackground">#b4986d</color>
 
     <color name="beefOverlay">#aaD32F2F</color>
     <color name="chickenOverlay">#aaFF5722</color>

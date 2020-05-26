@@ -37,17 +37,23 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
         return items.size
     }
 
+    fun setFoods(categories: MutableList<Category>){
+        items.clear()
+        items.addAll(categories)
+        notifyDataSetChanged()
+    }
+
     inner class ViewHolder(item : View) : RecyclerView.ViewHolder(item){
         var category: Category? = null
 
             set(value){
                 value?.let {
                     itemView.lblCategory.text = value.strCategory
-                    itemView.lblDescription.text = value.strCategoryDescription
+                    itemView.lblDescription.text = substringDescription(value.strCategoryDescription)
 
                     value.strCategory?.let {
-                        val overlayColor = Category.getBaseColor(it)
-                        itemView.imgOverlay.background = ContextCompat.getDrawable(itemView.context, overlayColor)
+                        val baseColor = Category.getBaseColor(it)
+                        itemView.imgBase.background = ContextCompat.getDrawable(itemView.context, baseColor)
                     }
 
                     Picasso.get()
@@ -65,6 +71,14 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
                     itemClickListener?.invoke(category as Category, adapterPosition)
                 }
             }
+        }
+
+        private fun substringDescription(value: String?): String{
+            var ret = value?.substringBefore("[")
+            if (ret!!.length > 200)
+                ret = ret?.substring(0, 240)
+
+            return ret
         }
     }
 

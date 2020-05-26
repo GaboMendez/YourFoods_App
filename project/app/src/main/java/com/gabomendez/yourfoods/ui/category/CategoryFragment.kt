@@ -62,7 +62,17 @@ class CategoryFragment : Fragment(), CategoryContract.View {
     }
 
     override fun onDomainSuccess(categories: MutableList<Category>) {
-        println()
+        context?.let {
+            view?.let {
+                hideProgress()
+                categoryAdapter.setFoods(categories)
+                categoryList.apply {
+                    visibility = View.VISIBLE
+                    adapter = categoryAdapter
+                    (recyclerCategory.adapter as CategoryAdapter).notifyDataSetChanged()
+                }
+            }
+        }
     }
 
     override fun onDomainError(msg: String) {
