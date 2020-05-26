@@ -9,6 +9,8 @@ class CategoryContract {
         fun showProgress()
         fun hideProgress()
         fun onCategoryTapped(category: Category)
+        fun onDomainSuccess(categories: MutableList<Category>)
+        fun onDomainError(msg: String)
         fun retryRequest()
     }
 

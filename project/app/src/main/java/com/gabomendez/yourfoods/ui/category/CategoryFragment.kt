@@ -61,4 +61,12 @@ class CategoryFragment : Fragment(), CategoryContract.View {
         println()
     }
 
+    override fun onDomainSuccess(categories: MutableList<Category>) {
+        println()
+    }
+
+    override fun onDomainError(msg: String) {
+        println()
+    }
+
 }
