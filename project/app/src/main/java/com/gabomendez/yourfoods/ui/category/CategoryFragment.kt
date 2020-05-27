@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,13 +18,13 @@ class CategoryFragment : Fragment(), CategoryContract.View {
 
     private lateinit var presenter: CategoryPresenter
 
-    val categoryList: RecyclerView by lazy {
+    private val categoryList: RecyclerView by lazy {
         val list: RecyclerView = view!!.findViewById(R.id.recyclerCategory)
         list.layoutManager = LinearLayoutManager(context)
         list
     }
 
-    val categoryAdapter: CategoryAdapter by lazy {
+    private val categoryAdapter: CategoryAdapter by lazy {
         val adapter = CategoryAdapter() { item, position ->
             onCategoryTapped(item)
         }
@@ -54,7 +55,9 @@ class CategoryFragment : Fragment(), CategoryContract.View {
     }
 
     override fun retryRequest() {
-        TODO("Not yet implemented")
+        layoutError.visibility = View.INVISIBLE
+        showProgress()
+        presenter.getData()
     }
 
     override fun onCategoryTapped(category: Category) {
@@ -76,7 +79,13 @@ class CategoryFragment : Fragment(), CategoryContract.View {
     }
 
     override fun onDomainError(msg: String) {
-        println()
+        context?.let {
+            view?.let {
+                hideProgress()
+                layoutError.visibility = View.VISIBLE
+                Toast.makeText(this.context,msg, Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
 }

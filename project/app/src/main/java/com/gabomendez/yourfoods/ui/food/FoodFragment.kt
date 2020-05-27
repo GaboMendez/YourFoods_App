@@ -23,13 +23,13 @@ class FoodFragment : Fragment(), FoodContract.View {
 
     private lateinit var presenter: FoodPresenter
 
-    val foodList: RecyclerView by lazy {
+    private val foodList: RecyclerView by lazy {
         val list: RecyclerView = view!!.findViewById(R.id.recyclerFood)
         list.layoutManager = LinearLayoutManager(context)
         list
     }
 
-    val foodAdapter: FoodAdapter by lazy {
+    private val foodAdapter: FoodAdapter by lazy {
         val adapter = FoodAdapter() { item, position ->
             onFoodTapped(item)
         }
