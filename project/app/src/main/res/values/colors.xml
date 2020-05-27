@@ -5,6 +5,7 @@
     <color name="colorAccent">#616161</color>
     <color name="colorGhostWhite">#f8f8ff</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
     <color name="colorBackground">#b4986d</color>
 
     <color name="beefOverlay">#aaD32F2F</color>

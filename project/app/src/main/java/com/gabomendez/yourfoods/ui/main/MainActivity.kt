@@ -3,9 +3,9 @@ package com.gabomendez.yourfoods.ui.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.ActionBar
 import com.gabomendez.yourfoods.R
-import com.gabomendez.yourfoods.ui.category.CategoryActivity
-import com.gabomendez.yourfoods.ui.food.FoodActivity
+import com.gabomendez.yourfoods.adapter.PageAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,11 +14,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportActionBar?.hide()
-
-        btnMain.setOnClickListener {
-            val intent = Intent(this, CategoryActivity::class.java)
-            startActivity(intent)
+        supportActionBar?.let {
+            it.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+            it.setCustomView(R.layout.action_bar_layout)
+            it.elevation = 0F
         }
+
+        viewPager.adapter = PageAdapter(supportFragmentManager)
+        tabLayout.setupWithViewPager(viewPager)
+
+        //supportActionBar?.hide()
     }
 }
