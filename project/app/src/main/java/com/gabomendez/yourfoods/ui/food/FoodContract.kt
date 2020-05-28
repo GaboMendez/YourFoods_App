@@ -17,6 +17,7 @@ class FoodContract {
 
     interface Presenter: BaseContract.BasePresenter<View>  {
         fun getData()
+        fun getCategoryData(category: String)
         fun getFood()
     }
 

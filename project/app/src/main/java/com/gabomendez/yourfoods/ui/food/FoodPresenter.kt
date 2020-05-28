@@ -25,6 +25,29 @@ class FoodPresenter: FoodContract.Presenter {
         }
     }
 
+    override fun getCategoryData(category: String) {
+        this.retService.let {
+            val call = retService.getFoodByCategory(category)
+            call.enqueue(object : Callback<FoodResponse> {
+                override fun onResponse(call: Call<FoodResponse>, response: Response<FoodResponse>) {
+                    if (response.isSuccessful){
+                        val categories = response.body()!!.results
+
+                        for (value in categories)
+                            value.strCategory = category
+
+                        if (categories.count() > 0)
+                            view.onDomainSuccess(categories)
+                    }
+                }
+
+                override fun onFailure(call: Call<FoodResponse>, t: Throwable) {
+                    view.onDomainError(t.message.toString())
+                }
+            })
+        }
+    }
+
     override fun getFood() {
         this.retService.let {
             val call = retService.getRandomFood()

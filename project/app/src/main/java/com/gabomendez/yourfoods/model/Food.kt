@@ -12,7 +12,7 @@ data class Food (
     val idMeal : Int = 0,
     val strMeal : String? = null,
     val strDrinkAlternate : String? = null,
-    val strCategory : String? = null,
+    var strCategory : String? = null,
     val strArea : String? = null,
     val strInstructions : String? = null,
     val strMealThumb : String? = null,

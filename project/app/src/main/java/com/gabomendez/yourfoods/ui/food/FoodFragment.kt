@@ -46,7 +46,12 @@ class FoodFragment : Fragment(), FoodContract.View {
         showProgress()
         presenter = FoodPresenter()
         presenter.attach(this)
-        presenter.getData()
+
+        val category = arguments?.getString("category")
+        if (category.isNullOrBlank())
+            presenter.getData()
+        else
+            presenter.getCategoryData(category)
 
         layoutError.btnTryAgain.setOnClickListener { retryRequest() }
     }

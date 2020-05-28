@@ -64,10 +64,16 @@ class CategoryFragment : Fragment(), CategoryContract.View {
 
     override fun onCategoryTapped(category: Category) {
         val trans = fragmentManager!!.beginTransaction()
-        trans.replace(R.id.categoryContainer, FoodFragment())
-        trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-        trans.addToBackStack(null)
-        trans.commit()
+        val foodFragment = FoodFragment()
+        val args = Bundle()
+        args.putString("category", category.strCategory)
+        foodFragment.arguments = args
+
+        trans.replace(R.id.categoryContainer, foodFragment)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .addToBackStack(null)
+            .commit()
+
     }
 
     override fun onDomainSuccess(categories: MutableList<Category>) {
