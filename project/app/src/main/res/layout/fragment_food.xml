@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/foodContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
@@ -9,7 +10,7 @@
     <include
         android:id="@+id/loadingBar"
         layout="@layout/loading"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <include
         android:id="@+id/layoutError"
@@ -18,7 +19,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerFood"
-        android:visibility="invisible"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

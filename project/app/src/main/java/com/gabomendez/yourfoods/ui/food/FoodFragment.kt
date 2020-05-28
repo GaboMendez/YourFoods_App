@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gabomendez.yourfoods.R
 import com.gabomendez.yourfoods.adapter.FoodAdapter
 import com.gabomendez.yourfoods.model.Food
+import com.gabomendez.yourfoods.ui.category.CategoryFragment
 import kotlinx.android.synthetic.main.fragment_food.*
 import kotlinx.android.synthetic.main.fragment_food.view.*
 import kotlinx.android.synthetic.main.item_error.view.*
@@ -22,7 +23,6 @@ import java.lang.IllegalArgumentException
 class FoodFragment : Fragment(), FoodContract.View {
 
     private lateinit var presenter: FoodPresenter
-
     private val foodList: RecyclerView by lazy {
         val list: RecyclerView = view!!.findViewById(R.id.recyclerFood)
         list.layoutManager = LinearLayoutManager(context)

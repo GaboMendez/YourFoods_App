@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gabomendez.yourfoods.R
 import com.gabomendez.yourfoods.adapter.CategoryAdapter
 import com.gabomendez.yourfoods.model.Category
+import com.gabomendez.yourfoods.ui.food.FoodFragment
 import kotlinx.android.synthetic.main.fragment_category.*
 import kotlinx.android.synthetic.main.item_error.view.*
 
@@ -61,7 +63,11 @@ class CategoryFragment : Fragment(), CategoryContract.View {
     }
 
     override fun onCategoryTapped(category: Category) {
-        println()
+        val trans = fragmentManager!!.beginTransaction()
+        trans.replace(R.id.categoryContainer, FoodFragment())
+        trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        trans.addToBackStack(null)
+        trans.commit()
     }
 
     override fun onDomainSuccess(categories: MutableList<Category>) {
