@@ -15,12 +15,12 @@ class FoodPresenter: FoodContract.Presenter {
 
     private lateinit var view: FoodContract.View
     private val retService: ApiService =  ServiceBuilder.buildService(ApiService::class.java)
-    private val listFoods = mutableListOf<Food>()
     private val subscriptions = CompositeDisposable()
+    var listFoods = mutableListOf<Food>()
     var isRepeatingError = false
 
     override fun getData() {
-        for (number in 0..9){
+        for (number in 0..15){
             getFood()
         }
     }

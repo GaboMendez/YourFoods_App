@@ -9,10 +9,9 @@ interface ApiService {
     @GET("api/json/v1/1/random.php")
     fun getRandomFood(): Call<FoodResponse>
 
-    @GET("api/json/v1/1/filter.php")
-    fun getFoodByCategory(@Query("c") category: String) : Call<FoodResponse>
-
     @GET("api/json/v1/1/categories.php")
     fun getCategories(): Call<CategoryResponse>
 
+    @GET("api/json/v1/1/filter.php")
+    fun getFoodByCategory(@Query("c") category: String) : Call<FoodResponse>
 }

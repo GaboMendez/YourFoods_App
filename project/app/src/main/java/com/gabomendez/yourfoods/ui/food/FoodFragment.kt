@@ -54,6 +54,7 @@ class FoodFragment : Fragment(), FoodContract.View {
             presenter.getCategoryData(category)
 
         layoutError.btnTryAgain.setOnClickListener { retryRequest() }
+        layoutRefresh.setOnRefreshListener { refreshData() }
     }
 
     override fun showProgress() {
@@ -71,6 +72,11 @@ class FoodFragment : Fragment(), FoodContract.View {
         presenter.getData()
     }
 
+    override fun refreshData(){
+        layoutRefresh.isRefreshing = true
+        presenter.listFoods.clear()
+        presenter.getData()
+    }
     override fun onFoodTapped(food: Food) {
         println()
     }
@@ -79,13 +85,16 @@ class FoodFragment : Fragment(), FoodContract.View {
         context?.let {
             view?.let {
                 hideProgress()
+                layoutRefresh.visibility = View.VISIBLE
                 foodAdapter.setFoods(foods)
                 foodList.apply {
-                    visibility = View.VISIBLE
                     layoutManager = GridLayoutManager(this.context, 2)
                     adapter = foodAdapter
                     (recyclerFood.adapter as FoodAdapter).notifyDataSetChanged()
                 }
+
+                if (layoutRefresh.isRefreshing)
+                    layoutRefresh.isRefreshing = false
             }
         }
     }
@@ -94,8 +103,12 @@ class FoodFragment : Fragment(), FoodContract.View {
         context?.let {
             view?.let {
                 hideProgress()
+                layoutRefresh.visibility = View.INVISIBLE
                 layoutError.visibility = View.VISIBLE
                 Toast.makeText(this.context,msg, Toast.LENGTH_LONG).show()
+
+                if (layoutRefresh.isRefreshing)
+                    layoutRefresh.isRefreshing = false
             }
         }
     }
