@@ -5,7 +5,8 @@
     android:id="@+id/foodContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground">
+    android:background="@color/colorBackground"
+    tools:context=".ui.food.FoodFragment">
 
     <include
         android:id="@+id/loadingBar"

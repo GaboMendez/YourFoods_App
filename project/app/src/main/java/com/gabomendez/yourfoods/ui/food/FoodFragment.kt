@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,7 @@ import com.gabomendez.yourfoods.R
 import com.gabomendez.yourfoods.adapter.FoodAdapter
 import com.gabomendez.yourfoods.model.Food
 import com.gabomendez.yourfoods.ui.category.CategoryFragment
+import com.gabomendez.yourfoods.ui.detail.DetailFragment
 import kotlinx.android.synthetic.main.fragment_food.*
 import kotlinx.android.synthetic.main.fragment_food.view.*
 import kotlinx.android.synthetic.main.item_error.view.*
@@ -23,6 +25,8 @@ import java.lang.IllegalArgumentException
 class FoodFragment : Fragment(), FoodContract.View {
 
     private lateinit var presenter: FoodPresenter
+    private var categoryName: String? = null
+
     private val foodList: RecyclerView by lazy {
         val list: RecyclerView = view!!.findViewById(R.id.recyclerFood)
         list.layoutManager = LinearLayoutManager(context)
@@ -36,6 +40,13 @@ class FoodFragment : Fragment(), FoodContract.View {
         adapter
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            categoryName = it.getString("category_name")
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_food, container, false)
     }
@@ -47,11 +58,10 @@ class FoodFragment : Fragment(), FoodContract.View {
         presenter = FoodPresenter()
         presenter.attach(this)
 
-        val category = arguments?.getString("category")
-        if (category.isNullOrBlank())
+        if (categoryName.isNullOrBlank())
             presenter.getData()
         else
-            presenter.getCategoryData(category)
+            presenter.getCategoryData(categoryName!!)
 
         layoutError.btnTryAgain.setOnClickListener { retryRequest() }
         layoutRefresh.setOnRefreshListener { refreshData() }
@@ -78,7 +88,13 @@ class FoodFragment : Fragment(), FoodContract.View {
         presenter.getData()
     }
     override fun onFoodTapped(food: Food) {
-        println()
+        val trans = fragmentManager!!.beginTransaction()
+        val detailFragment = DetailFragment.newInstance( food.idMeal.toString() )
+
+        trans.replace(R.id.foodContainer, detailFragment)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onDomainSuccess(foods: MutableList<Food>) {
@@ -111,6 +127,16 @@ class FoodFragment : Fragment(), FoodContract.View {
                     layoutRefresh.isRefreshing = false
             }
         }
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(param1: String) =
+            FoodFragment().apply {
+                arguments = Bundle().apply {
+                    putString("category_name", param1)
+                }
+            }
     }
 
 }
