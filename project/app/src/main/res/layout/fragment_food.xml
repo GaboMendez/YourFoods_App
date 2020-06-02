@@ -17,8 +17,6 @@
         layout="@layout/item_error"
         android:visibility="invisible" />
 
-
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/layoutRefresh"
         android:visibility="visible"
