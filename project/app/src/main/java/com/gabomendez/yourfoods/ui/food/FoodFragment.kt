@@ -95,10 +95,20 @@ class FoodFragment : Fragment(), FoodContract.View {
         val trans = fragmentManager!!.beginTransaction()
         val detailFragment = DetailFragment.newInstance( food.idMeal.toString() )
 
-        trans.replace(R.id.foodContainer, detailFragment)
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .addToBackStack(null)
-            .commit()
+        if(categoryName.isNullOrBlank()){
+            trans.replace(R.id.foodContainer, detailFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .addToBackStack(null)
+                .commit()
+        }else{
+            trans.replace(R.id.categoryContainer, detailFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .addToBackStack("MainActivity")
+                .commit()
+
+
+        }
+
     }
 
     override fun onDomainSuccess(foods: MutableList<Food>) {

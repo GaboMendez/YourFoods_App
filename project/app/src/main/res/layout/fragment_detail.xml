@@ -8,6 +8,16 @@
     android:background="@color/colorWhite"
     tools:context=".ui.detail.DetailFragment">
 
+    <include
+        android:id="@+id/loadingBar"
+        layout="@layout/loading"
+        android:visibility="invisible" />
+
+    <include
+        android:id="@+id/layoutError"
+        layout="@layout/item_error"
+        android:visibility="invisible" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,7 +25,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="220dp">
+            android:layout_height="240dp">
 
             <ImageView
                 android:id="@+id/imgBackground"
@@ -37,10 +47,11 @@
                 android:id="@+id/lblFood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="7dp"
                 android:layout_toRightOf="@id/imgBackground"
                 android:textColor="@android:color/white"
-                android:textSize="18sp"
+                android:textSize="19sp"
                 android:textStyle="bold"
                 tools:text="Food Name" />
 
@@ -49,13 +60,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/lblFood"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="7dp"
                 android:layout_marginTop="3dp"
                 android:layout_toRightOf="@id/imgBackground"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                tools:text="Category: " />
+                android:text="Category: " />
 
             <TextView
                 android:id="@+id/lblCategory"
@@ -75,13 +86,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/titleCategory"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="7dp"
                 android:layout_marginTop="3dp"
                 android:layout_toRightOf="@id/imgBackground"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                tools:text="Area: " />
+                android:text="Area: " />
 
             <TextView
                 android:id="@+id/lblArea"
