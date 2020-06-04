@@ -1,7 +1,5 @@
 package com.gabomendez.yourfoods.ui.food
 
-import android.content.Context
-import android.widget.Toast
 import com.gabomendez.yourfoods.api.ApiService
 import com.gabomendez.yourfoods.api.ServiceBuilder
 import com.gabomendez.yourfoods.model.Food
@@ -27,7 +25,7 @@ class FoodPresenter: FoodContract.Presenter {
 
     override fun getCategoryData(category: String) {
         this.retService.let {
-            val call = retService.getFoodByCategory(category)
+            val call = retService.getFoodsByCategory(category)
             call.enqueue(object : Callback<FoodResponse> {
                 override fun onResponse(call: Call<FoodResponse>, response: Response<FoodResponse>) {
                     if (response.isSuccessful){

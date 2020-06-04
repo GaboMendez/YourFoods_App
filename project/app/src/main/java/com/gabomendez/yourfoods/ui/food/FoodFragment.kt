@@ -58,14 +58,14 @@ class FoodFragment : Fragment(), FoodContract.View {
         presenter = FoodPresenter()
         presenter.attach(this)
 
-        if (categoryName.isNullOrBlank()){
+        if (categoryName.isNullOrBlank())
             presenter.getData()
-            layoutRefresh.setOnRefreshListener { refreshData() }
-        }
         else{
             presenter.getCategoryData(categoryName!!)
             layoutRefresh.isEnabled = false
         }
+
+        layoutRefresh.setOnRefreshListener { refreshData() }
 
         layoutError.btnTryAgain.setOnClickListener { retryRequest() }
     }
@@ -90,6 +90,7 @@ class FoodFragment : Fragment(), FoodContract.View {
         presenter.listFoods.clear()
         presenter.getData()
     }
+
     override fun onFoodTapped(food: Food) {
         val trans = fragmentManager!!.beginTransaction()
         val detailFragment = DetailFragment.newInstance( food.idMeal.toString() )

@@ -13,5 +13,8 @@ interface ApiService {
     fun getCategories(): Call<CategoryResponse>
 
     @GET("api/json/v1/1/filter.php")
-    fun getFoodByCategory(@Query("c") category: String) : Call<FoodResponse>
+    fun getFoodsByCategory(@Query("c") category: String) : Call<FoodResponse>
+
+    @GET("api/json/v1/1/lookup.php")
+    fun getFoodByID(@Query("i") id: String) : Call<FoodResponse>
 }
