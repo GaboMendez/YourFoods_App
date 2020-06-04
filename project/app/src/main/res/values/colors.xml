@@ -8,32 +8,32 @@
     <color name="colorBlack">#000000</color>
     <color name="colorBackground">#b4986d</color>
 
-    <color name="beefOverlay">#aaD32F2F</color>
+    <color name="beefOverlay">#aa3c2f2f</color>
     <color name="chickenOverlay">#aaFF5722</color>
     <color name="dessertOverlay">#aa795548</color>
     <color name="lambOverlay">#aa494949</color>
     <color name="miscellaneousOverlay">#aa1565c0</color>
-    <color name="porkOverlay">#aac51162</color>
-    <color name="seafoodOverlay">#aaea80fc</color>
+    <color name="porkOverlay">#aad69cbc</color>
+    <color name="seafoodOverlay">#aaa15fa9</color>
     <color name="sideOverlay">#aa00838f</color>
-    <color name="starterOverlay">#aafbc02d</color>
-    <color name="veganOverlay">#aab2ff59</color>
+    <color name="starterOverlay">#aaffb653</color>
+    <color name="veganOverlay">#aa95df71</color>
     <color name="vegetarianOverlay">#aa4caf50</color>
-    <color name="breakfastOverlay">#aaffd740</color>
-    <color name="goatOverlay">#aadd2c00</color>
+    <color name="breakfastOverlay">#aafbc02d</color>
+    <color name="goatOverlay">#aa00b0b6</color>
 
-    <color name="beefBase">#D32F2F</color>
+    <color name="beefBase">#3c2f2f</color>
     <color name="chickenBase">#FF5722</color>
     <color name="dessertBase">#795548</color>
     <color name="lambBase">#494949</color>
     <color name="miscellaneousBase">#1565c0</color>
-    <color name="porkBase">#c51162</color>
-    <color name="seafoodBase">#ea80fc</color>
+    <color name="porkBase">#d69cbc</color>
+    <color name="seafoodBase">#a15fa9</color>
     <color name="sideBase">#00838f</color>
-    <color name="starterBase">#fbc02d</color>
-    <color name="veganBase">#b2ff59</color>
+    <color name="starterBase">#ffb653</color>
+    <color name="veganBase">#95df71</color>
     <color name="vegetarianBase">#4caf50</color>
-    <color name="breakfastBase">#ffd740</color>
-    <color name="goatBase">#dd2c00</color>
+    <color name="breakfastBase">#fbc02d</color>
+    <color name="goatBase">#00b0b6</color>
 
 </resources>

@@ -58,13 +58,16 @@ class FoodFragment : Fragment(), FoodContract.View {
         presenter = FoodPresenter()
         presenter.attach(this)
 
-        if (categoryName.isNullOrBlank())
+        if (categoryName.isNullOrBlank()){
             presenter.getData()
-        else
+            layoutRefresh.setOnRefreshListener { refreshData() }
+        }
+        else{
             presenter.getCategoryData(categoryName!!)
+            layoutRefresh.isEnabled = false
+        }
 
         layoutError.btnTryAgain.setOnClickListener { retryRequest() }
-        layoutRefresh.setOnRefreshListener { refreshData() }
     }
 
     override fun showProgress() {
