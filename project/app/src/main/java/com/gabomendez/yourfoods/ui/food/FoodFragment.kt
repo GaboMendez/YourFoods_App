@@ -101,12 +101,10 @@ class FoodFragment : Fragment(), FoodContract.View {
                 .addToBackStack(null)
                 .commit()
         }else{
-            trans.replace(R.id.categoryContainer, detailFragment)
+            trans.replace(R.id.categoryContainer, detailFragment, "category-food")
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .addToBackStack("MainActivity")
+                .addToBackStack(null)
                 .commit()
-
-
         }
 
     }

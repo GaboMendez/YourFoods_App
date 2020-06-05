@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.ActionBar
+import androidx.fragment.app.FragmentManager
 import com.gabomendez.yourfoods.R
 import com.gabomendez.yourfoods.adapter.PageAdapter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,5 +25,14 @@ class MainActivity : AppCompatActivity() {
         tabLayout.setupWithViewPager(viewPager)
 
         //supportActionBar?.hide()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        if ( supportFragmentManager.findFragmentByTag("category-food") != null ){
+            supportFragmentManager.popBackStack("category", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        }
+
     }
 }

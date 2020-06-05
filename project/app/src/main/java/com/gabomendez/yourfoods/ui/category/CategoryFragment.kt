@@ -66,9 +66,9 @@ class CategoryFragment : Fragment(), CategoryContract.View {
         val trans = fragmentManager!!.beginTransaction()
         val foodFragment = FoodFragment.newInstance( category.strCategory.toString() )
 
-        trans.replace(R.id.categoryContainer, foodFragment)
+        trans.replace(R.id.categoryContainer, foodFragment, "category")
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .addToBackStack(null)
+            .addToBackStack("category")
             .commit()
     }
 
