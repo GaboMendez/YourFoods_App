@@ -94,6 +94,7 @@ class FoodFragment : Fragment(), FoodContract.View {
     override fun onFoodTapped(food: Food) {
         val trans = fragmentManager!!.beginTransaction()
         val detailFragment = DetailFragment.newInstance( food.idMeal.toString() )
+        trans.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
 
         if(categoryName.isNullOrBlank()){
             trans.replace(R.id.foodContainer, detailFragment)

@@ -65,6 +65,7 @@ class CategoryFragment : Fragment(), CategoryContract.View {
     override fun onCategoryTapped(category: Category) {
         val trans = fragmentManager!!.beginTransaction()
         val foodFragment = FoodFragment.newInstance( category.strCategory.toString() )
+        trans.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
 
         trans.replace(R.id.categoryContainer, foodFragment, "category")
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
