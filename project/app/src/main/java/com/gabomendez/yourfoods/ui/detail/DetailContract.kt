@@ -12,6 +12,7 @@ class DetailContract {
         fun onDomainSuccess(food: Food)
         fun onDomainError(msg: String)
         fun showInstructions()
+        fun showTutorial()
         fun retryRequest()
     }
 

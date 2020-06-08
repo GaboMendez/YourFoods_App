@@ -1,6 +1,8 @@
 package com.gabomendez.yourfoods.ui.detail
 
 import android.app.AlertDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,8 +18,8 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : Fragment(), DetailContract.View {
     private lateinit var presenter: DetailPresenter
+    private lateinit var actualFood: Food
     private var foodID: String? = null
-    private var actualFood: Food? = null
 
     private val ingredientsList: RecyclerView by lazy {
         val list: RecyclerView = view!!.findViewById(R.id.recyclerIngredients)
@@ -47,6 +49,7 @@ class DetailFragment : Fragment(), DetailContract.View {
             presenter.getFoodData(foodID!!)
 
         btnInstructions.setOnClickListener { showInstructions() }
+        btnTutorial.setOnClickListener { showTutorial() }
     }
 
     override fun showProgress() {
@@ -111,26 +114,24 @@ class DetailFragment : Fragment(), DetailContract.View {
     }
 
     override fun onDomainSuccess(food: Food) {
-        food?.let {
-            with(food){
-                actualFood = food
-                lblFood.text = strMeal
-                lblCategory.text = strCategory
-                lblArea.text = strArea
+        with(food){
+            actualFood = this
+            lblFood.text = strMeal
+            lblCategory.text = strCategory
+            lblArea.text = strArea
 
-                if (!strTags.isNullOrEmpty())
-                    lblTags.text = strTags
-                else
-                    lblTags.visibility = View.INVISIBLE
+            if (!strTags.isNullOrEmpty())
+                lblTags.text = strTags
+            else
+                lblTags.visibility = View.INVISIBLE
 
-                Picasso.get()
-                    .load(strMealThumb)
-                    .placeholder(R.drawable.detail_background)
-                    .into(imgBackground)
+            Picasso.get()
+                .load(strMealThumb)
+                .placeholder(R.drawable.detail_background)
+                .into(imgBackground)
 
-                setMeasuresAndIngredients(it)
-                hideProgress()
-            }
+            setMeasuresAndIngredients(food)
+            hideProgress()
         }
     }
 
@@ -149,7 +150,7 @@ class DetailFragment : Fragment(), DetailContract.View {
     }
 
     override fun showInstructions(){
-        actualFood?.let {
+        actualFood.let {
             val dialog = AlertDialog.Builder(context)
                 .setTitle("Instructions")
                 .setMessage(it.strInstructions)
@@ -157,6 +158,14 @@ class DetailFragment : Fragment(), DetailContract.View {
 
             dialog.show()
         }
+    }
+
+    override fun showTutorial() {
+        actualFood.let {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.strYoutube))
+            startActivity(intent)
+        }
+
     }
 
     companion object {
