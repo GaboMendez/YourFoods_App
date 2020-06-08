@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/detailContainer"
+    android:clickable="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
@@ -11,14 +12,17 @@
     <include
         android:id="@+id/loadingBar"
         layout="@layout/loading"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 
     <include
         android:id="@+id/layoutError"
         layout="@layout/item_error"
         android:visibility="invisible" />
 
+
     <LinearLayout
+        android:visibility="invisible"
+        android:id="@+id/layoutDetail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -53,7 +57,7 @@
                 android:layout_marginLeft="7dp"
                 android:layout_toRightOf="@id/imgBackground"
                 android:textColor="@android:color/white"
-                android:textSize="19sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 tools:text="Food Name" />
 
@@ -66,7 +70,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_toRightOf="@id/imgBackground"
                 android:textColor="@android:color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="Category: " />
 
@@ -80,7 +84,7 @@
                 android:layout_toRightOf="@id/titleCategory"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 tools:text="Name" />
 
             <TextView
@@ -92,7 +96,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_toRightOf="@id/imgBackground"
                 android:textColor="@android:color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="Area: " />
 
@@ -106,7 +110,7 @@
                 android:layout_toRightOf="@id/titleArea"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 tools:text="Name" />
 
             <TextView
@@ -120,7 +124,7 @@
                 android:drawableLeft="@drawable/ic_tag"
                 android:drawablePadding="5dp"
                 android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold|italic"
                 tools:text="Fish,Pie,Breakfast,Baking" />
         </RelativeLayout>
@@ -138,10 +142,10 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:textColor="@color/colorBlack"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:text="-Measures &amp; Ingredients"
-                android:layout_marginLeft="15dp" />
+                android:layout_marginLeft="13dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerIngredients"
@@ -149,37 +153,42 @@
                 tools:listitem="@layout/item_ingredient"
                 android:layout_below="@id/titleIngredients"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"/>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnInstructions"
-                style="@style/Widget.MaterialComponents.Button.Icon"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@id/btnTutorial"
-                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="6dp"
-                android:backgroundTint="@color/colorAccent"
-                android:text="Instructions"
-                app:icon="@drawable/ic_recipe"
-                app:iconGravity="start"
-                app:iconSize="25sp" />
+                android:layout_alignParentLeft="true"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/recyclerIngredients">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnTutorial"
-                style="@style/Widget.MaterialComponents.Button.Icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginRight="6dp"
-                android:backgroundTint="@color/colorAccent"
-                android:text="Tutorial"
-                app:icon="@drawable/ic_play"
-                app:iconGravity="start"
-                app:iconSize="25sp" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnInstructions"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:text="Instructions"
+                    app:icon="@drawable/ic_recipe"
+                    app:iconGravity="start" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTutorial"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:text="Tutorial"
+                    app:icon="@drawable/ic_play"
+                    app:iconGravity="start"
+                    app:iconSize="25sp" />
+            </LinearLayout>
+
+
 
         </RelativeLayout>
     </LinearLayout>

@@ -9,12 +9,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.*
 import com.gabomendez.yourfoods.R
 import com.gabomendez.yourfoods.adapter.IngredientAdapter
 import com.gabomendez.yourfoods.model.Food
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_detail.*
+import kotlinx.android.synthetic.main.fragment_detail.layoutError
+import kotlinx.android.synthetic.main.fragment_detail.loadingBar
+import kotlinx.android.synthetic.main.fragment_food.*
+import kotlinx.android.synthetic.main.item_error.*
 
 class DetailFragment : Fragment(), DetailContract.View {
     private lateinit var presenter: DetailPresenter
@@ -24,6 +29,7 @@ class DetailFragment : Fragment(), DetailContract.View {
     private val ingredientsList: RecyclerView by lazy {
         val list: RecyclerView = view!!.findViewById(R.id.recyclerIngredients)
         list.layoutManager = LinearLayoutManager(context)
+        list.adapter = IngredientAdapter()
         list
     }
 
@@ -48,6 +54,7 @@ class DetailFragment : Fragment(), DetailContract.View {
         if (!foodID.isNullOrEmpty())
             presenter.getFoodData(foodID!!)
 
+        btnTryAgain.setOnClickListener { retryRequest() }
         btnInstructions.setOnClickListener { showInstructions() }
         btnTutorial.setOnClickListener { showTutorial() }
     }
@@ -85,24 +92,6 @@ class DetailFragment : Fragment(), DetailContract.View {
                 ret.add("$strMeasure10-of $strIngredient10")
             if (!strMeasure11.isNullOrBlank() && !strIngredient11.isNullOrBlank())
                 ret.add("$strMeasure11-of $strIngredient11")
-            if (!strMeasure12.isNullOrBlank() && !strIngredient12.isNullOrBlank())
-                ret.add("$strMeasure12-of $strIngredient12")
-            if (!strMeasure13.isNullOrBlank() && !strIngredient13.isNullOrBlank())
-                ret.add("$strMeasure13-of $strIngredient13")
-            if (!strMeasure14.isNullOrBlank() && !strIngredient14.isNullOrBlank())
-                ret.add("$strMeasure14-of $strIngredient14")
-            if (!strMeasure15.isNullOrBlank() && !strIngredient15.isNullOrBlank())
-                ret.add("$strMeasure15-of $strIngredient15")
-            if (!strMeasure16.isNullOrBlank() && !strIngredient16.isNullOrBlank())
-                ret.add("$strMeasure16-of $strIngredient16")
-            if (!strMeasure17.isNullOrBlank() && !strIngredient17.isNullOrBlank())
-                ret.add("$strMeasure17-of $strIngredient17")
-            if (!strMeasure18.isNullOrBlank() && !strIngredient18.isNullOrBlank())
-                ret.add("$strMeasure18-of $strIngredient18")
-            if (!strMeasure19.isNullOrBlank() && !strIngredient19.isNullOrBlank())
-                ret.add("$strMeasure19-of $strIngredient19")
-            if (!strMeasure20.isNullOrBlank() && !strIngredient20.isNullOrBlank())
-                ret.add("$strMeasure20-of $strIngredient20")
         }
 
         val newAdapter = IngredientAdapter()
@@ -115,7 +104,9 @@ class DetailFragment : Fragment(), DetailContract.View {
 
     override fun onDomainSuccess(food: Food) {
         with(food){
+            detailContainer.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorWhite));
             actualFood = this
+            layoutDetail.visibility = View.VISIBLE
             lblFood.text = strMeal
             lblCategory.text = strCategory
             lblArea.text = strArea
@@ -138,6 +129,8 @@ class DetailFragment : Fragment(), DetailContract.View {
     override fun onDomainError(msg: String) {
         context?.let {
             view?.let {
+                detailContainer.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorBackground));
+                layoutDetail.visibility = View.INVISIBLE
                 hideProgress()
                 layoutError.visibility = View.VISIBLE
                 Toast.makeText(this.context,msg, Toast.LENGTH_LONG).show()
@@ -146,7 +139,9 @@ class DetailFragment : Fragment(), DetailContract.View {
     }
 
     override fun retryRequest() {
-        TODO("Not yet implemented")
+        layoutError.visibility = View.INVISIBLE
+        showProgress()
+        presenter.getFoodData(foodID!!)
     }
 
     override fun showInstructions(){
@@ -165,7 +160,6 @@ class DetailFragment : Fragment(), DetailContract.View {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.strYoutube))
             startActivity(intent)
         }
-
     }
 
     companion object {

@@ -66,7 +66,6 @@ class FoodFragment : Fragment(), FoodContract.View {
         }
 
         layoutRefresh.setOnRefreshListener { refreshData() }
-
         layoutError.btnTryAgain.setOnClickListener { retryRequest() }
     }
 
