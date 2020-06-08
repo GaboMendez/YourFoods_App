@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gabomendez.yourfoods.R
+import kotlinx.android.synthetic.main.item_ingredient.view.*
 
 class IngredientAdapter : RecyclerView.Adapter<IngredientAdapter.ViewHolder>() {
 
@@ -35,13 +36,11 @@ class IngredientAdapter : RecyclerView.Adapter<IngredientAdapter.ViewHolder>() {
 
             set(value){
                 value?.let {
-                    //itemView.lblCategory.text = value.strCategory
-                    //itemView.lblDescription.text = substringDescription(value.strCategoryDescription)
+                    itemView.lblMeasure.text = value.substringBefore("-")
+                    itemView.lblIngredient.text = value.substringAfter("-")
                 }
-
                 field = value
             }
-
     }
 
 }

@@ -8,6 +8,7 @@ class DetailContract {
     interface View: BaseContract.BaseView {
         fun showProgress()
         fun hideProgress()
+        fun setMeasuresAndIngredients(food: Food)
         fun onDomainSuccess(food: Food)
         fun onDomainError(msg: String)
         fun retryRequest()
