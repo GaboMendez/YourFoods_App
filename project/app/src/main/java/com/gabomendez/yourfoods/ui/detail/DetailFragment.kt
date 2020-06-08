@@ -1,5 +1,6 @@
 package com.gabomendez.yourfoods.ui.detail
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 class DetailFragment : Fragment(), DetailContract.View {
     private lateinit var presenter: DetailPresenter
     private var foodID: String? = null
+    private var actualFood: Food? = null
 
     private val ingredientsList: RecyclerView by lazy {
         val list: RecyclerView = view!!.findViewById(R.id.recyclerIngredients)
@@ -44,6 +46,7 @@ class DetailFragment : Fragment(), DetailContract.View {
         if (!foodID.isNullOrEmpty())
             presenter.getFoodData(foodID!!)
 
+        btnInstructions.setOnClickListener { showInstructions() }
     }
 
     override fun showProgress() {
@@ -110,6 +113,7 @@ class DetailFragment : Fragment(), DetailContract.View {
     override fun onDomainSuccess(food: Food) {
         food?.let {
             with(food){
+                actualFood = food
                 lblFood.text = strMeal
                 lblCategory.text = strCategory
                 lblArea.text = strArea
@@ -142,6 +146,17 @@ class DetailFragment : Fragment(), DetailContract.View {
 
     override fun retryRequest() {
         TODO("Not yet implemented")
+    }
+
+    override fun showInstructions(){
+        actualFood?.let {
+            val dialog = AlertDialog.Builder(context)
+                .setTitle("Instructions")
+                .setMessage(it.strInstructions)
+                .setPositiveButton("Ok", null)
+
+            dialog.show()
+        }
     }
 
     companion object {

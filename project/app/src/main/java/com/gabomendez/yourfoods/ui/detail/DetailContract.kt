@@ -11,6 +11,7 @@ class DetailContract {
         fun setMeasuresAndIngredients(food: Food)
         fun onDomainSuccess(food: Food)
         fun onDomainError(msg: String)
+        fun showInstructions()
         fun retryRequest()
     }
 
