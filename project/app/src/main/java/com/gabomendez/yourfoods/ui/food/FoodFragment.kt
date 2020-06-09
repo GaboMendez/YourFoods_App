@@ -118,7 +118,7 @@ class FoodFragment : Fragment(), FoodContract.View {
                 foodAdapter.setFoods(foods)
                 foodList.apply {
                     //layoutManager = GridLayoutManager(this.context, 2)
-                    layoutManager = AutoFitGridLayoutManager(this.context, 500)
+                    layoutManager = AutoFitGridLayoutManager(this.context, 525)
                     adapter = foodAdapter
                     (recyclerFood.adapter as FoodAdapter).notifyDataSetChanged()
                 }

@@ -13,6 +13,7 @@ import com.gabomendez.yourfoods.R
 import com.gabomendez.yourfoods.adapter.CategoryAdapter
 import com.gabomendez.yourfoods.model.Category
 import com.gabomendez.yourfoods.ui.food.FoodFragment
+import com.gabomendez.yourfoods.util.Functions
 import kotlinx.android.synthetic.main.fragment_category.*
 import kotlinx.android.synthetic.main.item_error.view.*
 
@@ -63,14 +64,17 @@ class CategoryFragment : Fragment(), CategoryContract.View {
     }
 
     override fun onCategoryTapped(category: Category) {
-        val trans = fragmentManager!!.beginTransaction()
-        val foodFragment = FoodFragment.newInstance( category.strCategory.toString() )
-        trans.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+        if (Functions.isConnected(this.context!!)){
+            val trans = fragmentManager!!.beginTransaction()
+            val foodFragment = FoodFragment.newInstance( category.strCategory.toString() )
+            trans.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
 
-        trans.replace(R.id.categoryContainer, foodFragment, "category")
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-            .addToBackStack("category")
-            .commit()
+            trans.replace(R.id.categoryContainer, foodFragment, "category")
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .addToBackStack("category")
+                .commit()
+        }else
+            onDomainError("No Internet Connection!")
     }
 
     override fun onDomainSuccess(categories: MutableList<Category>) {
@@ -91,6 +95,7 @@ class CategoryFragment : Fragment(), CategoryContract.View {
         context?.let {
             view?.let {
                 hideProgress()
+                recyclerCategory.visibility = View.INVISIBLE
                 layoutError.visibility = View.VISIBLE
                 Toast.makeText(this.context,msg, Toast.LENGTH_LONG).show()
             }
