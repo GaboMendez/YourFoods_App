@@ -17,6 +17,7 @@ import com.gabomendez.yourfoods.adapter.FoodAdapter
 import com.gabomendez.yourfoods.model.Food
 import com.gabomendez.yourfoods.ui.category.CategoryFragment
 import com.gabomendez.yourfoods.ui.detail.DetailFragment
+import com.gabomendez.yourfoods.util.AutoFitGridLayoutManager
 import kotlinx.android.synthetic.main.fragment_food.*
 import kotlinx.android.synthetic.main.fragment_food.view.*
 import kotlinx.android.synthetic.main.item_error.view.*
@@ -116,7 +117,8 @@ class FoodFragment : Fragment(), FoodContract.View {
                 layoutRefresh.visibility = View.VISIBLE
                 foodAdapter.setFoods(foods)
                 foodList.apply {
-                    layoutManager = GridLayoutManager(this.context, 2)
+                    //layoutManager = GridLayoutManager(this.context, 2)
+                    layoutManager = AutoFitGridLayoutManager(this.context, 500)
                     adapter = foodAdapter
                     (recyclerFood.adapter as FoodAdapter).notifyDataSetChanged()
                 }
