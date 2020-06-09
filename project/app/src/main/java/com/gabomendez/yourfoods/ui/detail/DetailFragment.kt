@@ -56,7 +56,6 @@ class DetailFragment : Fragment(), DetailContract.View {
 
         btnTryAgain.setOnClickListener { retryRequest() }
         btnInstructions.setOnClickListener { showInstructions() }
-        btnTutorial.setOnClickListener { showTutorial() }
     }
 
     override fun showProgress() {
@@ -115,6 +114,12 @@ class DetailFragment : Fragment(), DetailContract.View {
                 lblTags.text = strTags
             else
                 lblTags.visibility = View.INVISIBLE
+
+            if (!strYoutube.isNullOrBlank()){
+                btnTutorial.setOnClickListener { showTutorial() }
+                btnTutorial.visibility = View.VISIBLE
+            }else
+                btnTutorial.visibility = View.INVISIBLE
 
             Picasso.get()
                 .load(strMealThumb)
