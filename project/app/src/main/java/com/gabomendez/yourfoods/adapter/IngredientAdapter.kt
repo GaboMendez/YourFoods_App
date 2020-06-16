@@ -36,8 +36,8 @@ class IngredientAdapter : RecyclerView.Adapter<IngredientAdapter.ViewHolder>() {
 
             set(value){
                 value?.let {
-                    itemView.lblMeasure.text = value.substringBefore("-")
-                    itemView.lblIngredient.text = value.substringAfter("-")
+                    itemView.lblIngredient.text = value.substringBefore("-")
+                    itemView.lblMeasure.text = value.substringAfter("-")
                 }
                 field = value
             }

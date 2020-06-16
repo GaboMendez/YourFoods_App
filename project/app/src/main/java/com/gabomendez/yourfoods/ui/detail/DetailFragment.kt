@@ -60,6 +60,7 @@ class DetailFragment : Fragment(), DetailContract.View {
     }
 
     override fun showProgress() {
+        layoutDetail.visibility = View.INVISIBLE
         loadingBar.visibility = View.VISIBLE
     }
 
@@ -92,6 +93,22 @@ class DetailFragment : Fragment(), DetailContract.View {
                 ret.add("$strMeasure10-$strIngredient10")
             if (!strMeasure11.isNullOrBlank() && !strIngredient11.isNullOrBlank())
                 ret.add("$strMeasure11-$strIngredient11")
+            if (!strMeasure12.isNullOrBlank() && !strIngredient12.isNullOrBlank())
+                ret.add("$strMeasure12-$strIngredient12")
+            if (!strMeasure13.isNullOrBlank() && !strIngredient13.isNullOrBlank())
+                ret.add("$strMeasure13-$strIngredient13")
+            if (!strMeasure14.isNullOrBlank() && !strIngredient14.isNullOrBlank())
+                ret.add("$strMeasure14-$strIngredient14")
+            if (!strMeasure15.isNullOrBlank() && !strIngredient15.isNullOrBlank())
+                ret.add("$strMeasure15-$strIngredient15")
+            if (!strMeasure16.isNullOrBlank() && !strIngredient16.isNullOrBlank())
+                ret.add("$strMeasure16-$strIngredient16")
+            if (!strMeasure17.isNullOrBlank() && !strIngredient17.isNullOrBlank())
+                ret.add("$strMeasure17-$strIngredient17")
+            if (!strMeasure18.isNullOrBlank() && !strIngredient18.isNullOrBlank())
+                ret.add("$strMeasure18-$strIngredient18")
+            if (!strMeasure19.isNullOrBlank() && !strIngredient19.isNullOrBlank())
+                ret.add("$strMeasure19-$strIngredient19")
         }
 
         val newAdapter = IngredientAdapter()
