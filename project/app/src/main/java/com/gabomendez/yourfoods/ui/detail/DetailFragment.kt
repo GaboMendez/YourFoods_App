@@ -18,7 +18,8 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.android.synthetic.main.fragment_detail.layoutError
 import kotlinx.android.synthetic.main.fragment_detail.loadingBar
-import kotlinx.android.synthetic.main.fragment_food.*
+import kotlinx.android.synthetic.main.header_detail.*
+import kotlinx.android.synthetic.main.ingredient_detail.*
 import kotlinx.android.synthetic.main.item_error.*
 
 class DetailFragment : Fragment(), DetailContract.View {
@@ -70,27 +71,27 @@ class DetailFragment : Fragment(), DetailContract.View {
         val ret = mutableListOf<String>()
         with(food){
             if (!strMeasure1.isNullOrBlank() && !strIngredient1.isNullOrBlank())
-                ret.add("$strMeasure1-of $strIngredient1")
+                ret.add("$strMeasure1-$strIngredient1")
             if (!strMeasure2.isNullOrBlank() && !strIngredient2.isNullOrBlank())
-                ret.add("$strMeasure2-of $strIngredient2")
+                ret.add("$strMeasure2-$strIngredient2")
             if (!strMeasure3.isNullOrBlank() && !strIngredient3.isNullOrBlank())
-                ret.add("$strMeasure3-of $strIngredient3")
+                ret.add("$strMeasure3-$strIngredient3")
             if (!strMeasure4.isNullOrBlank() && !strIngredient4.isNullOrBlank())
-                ret.add("$strMeasure4-of $strIngredient4")
+                ret.add("$strMeasure4-$strIngredient4")
             if (!strMeasure5.isNullOrBlank() && !strIngredient5.isNullOrBlank())
-                ret.add("$strMeasure5-of $strIngredient5")
+                ret.add("$strMeasure5-$strIngredient5")
             if (!strMeasure6.isNullOrBlank() && !strIngredient6.isNullOrBlank())
-                ret.add("$strMeasure6-of $strIngredient6")
+                ret.add("$strMeasure6-$strIngredient6")
             if (!strMeasure7.isNullOrBlank() && !strIngredient7.isNullOrBlank())
-                ret.add("$strMeasure7-of $strIngredient7")
+                ret.add("$strMeasure7-$strIngredient7")
             if (!strMeasure8.isNullOrBlank() && !strIngredient8.isNullOrBlank())
-                ret.add("$strMeasure8-of $strIngredient8")
+                ret.add("$strMeasure8-$strIngredient8")
             if (!strMeasure9.isNullOrBlank() && !strIngredient9.isNullOrBlank())
-                ret.add("$strMeasure9-of $strIngredient9")
+                ret.add("$strMeasure9-$strIngredient9")
             if (!strMeasure10.isNullOrBlank() && !strIngredient10.isNullOrBlank())
-                ret.add("$strMeasure10-of $strIngredient10")
+                ret.add("$strMeasure10-$strIngredient10")
             if (!strMeasure11.isNullOrBlank() && !strIngredient11.isNullOrBlank())
-                ret.add("$strMeasure11-of $strIngredient11")
+                ret.add("$strMeasure11-$strIngredient11")
         }
 
         val newAdapter = IngredientAdapter()

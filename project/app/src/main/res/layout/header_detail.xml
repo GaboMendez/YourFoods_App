@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgBackground"
+            android:layout_width="170dp"
+            android:scaleType="centerCrop"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:background="@color/colorBackground"
+            android:src="@drawable/detail_background" />
+
+        <View
+            android:id="@+id/imgBase"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/imgBackground"
+            android:background="@color/colorBackground" />
+
+        <TextView
+            android:id="@+id/lblFood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="7dp"
+            android:layout_toRightOf="@id/imgBackground"
+            android:textColor="@android:color/white"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:text="Food Name" />
+
+        <TextView
+            android:id="@+id/titleCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lblFood"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/imgBackground"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="Category: " />
+
+        <TextView
+            android:id="@+id/lblCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lblFood"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/titleCategory"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/titleArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleCategory"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/imgBackground"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="Area: " />
+
+        <TextView
+            android:id="@+id/lblArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lblCategory"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/titleArea"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/lblTags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleArea"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/imgBackground"
+            android:drawableLeft="@drawable/ic_tag"
+            android:drawablePadding="5dp"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold|italic"
+            tools:text="Fish,Pie,Breakfast,Baking" />
+
+    </RelativeLayout>
+
+</FrameLayout>
