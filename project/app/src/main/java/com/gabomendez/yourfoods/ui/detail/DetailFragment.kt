@@ -137,7 +137,7 @@ class DetailFragment : Fragment(), DetailContract.View {
                 btnTutorial.setOnClickListener { showTutorial() }
                 btnTutorial.visibility = View.VISIBLE
             }else
-                btnTutorial.visibility = View.INVISIBLE
+                btnTutorial.visibility = View.GONE
 
             Picasso.get()
                 .load(strMealThumb)
