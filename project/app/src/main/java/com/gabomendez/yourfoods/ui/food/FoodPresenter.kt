@@ -56,7 +56,7 @@ class FoodPresenter: FoodContract.Presenter {
                         if (food != null)
                             listFoods.add(food)
 
-                        if (listFoods.size >= 10)
+                        if (listFoods.size >= 15)
                             view.onDomainSuccess(listFoods)
                     }
                 }
