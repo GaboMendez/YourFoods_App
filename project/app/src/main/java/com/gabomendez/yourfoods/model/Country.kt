@@ -19,8 +19,24 @@ object CountryRepo{
         ret.add(Country(code = "KN", name = "Saint Kitts and Nevis", lat = 17.31983192, long = 297.2574234, radius = 15000.0))
         ret.add(Country(code = "KY", name = "Cayman Islands", lat = 19.32021528, long = 278.75198364, radius = 15000.0))
         ret.add(Country(code = "MX", name = "Mexico", lat = 23.07973176, long = -102.12890625, radius = 450000.0))
-        ret.add(Country(code = "SV", name = "El Salvador", lat = 13.60327813, long = -88.79150391, radius = 80000.0))
+        ret.add(Country(code = "SV", name = "Salvador", lat = 13.60327813, long = -88.79150391, radius = 80000.0))
         ret.add(Country(code = "VI", name = "U.S. Virgin Islands", lat = 17.73233683, long = 295.23593903, radius = 15000.0))
         return ret
+    }
+
+    fun getCountryByCode(code: String): String{
+        return when(code){
+            "US" -> "United States"
+            "AW" -> "Aruba"
+            "CA" -> "Canada"
+            "GP" -> "Guadalupe"
+            "HK" -> "Hong Kong"
+            "KN" -> "Saint Kitts and Nevis"
+            "KY" -> "Cayman Islands"
+            "MX" -> "Mexico"
+            "SV" -> "Salvador"
+            "VI" -> "U.S. Virgin Islands"
+            else -> "Not Found..."
+        }
     }
 }

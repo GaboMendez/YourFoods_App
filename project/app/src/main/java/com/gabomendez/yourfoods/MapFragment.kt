@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.gabomendez.yourfoods.model.*
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
@@ -31,15 +32,17 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             MapsInitializer.initialize(context)
             googleMap = it
             googleMap.apply {
+                val zoomZone = LatLngBounds(LatLng(-20.63278425, 233.4375), LatLng(71.30079292, 298.125))
+                it.moveCamera(CameraUpdateFactory.newLatLngBounds(zoomZone, 0))
 
                 val countries = CountryRepo.getCountries()
                 for(country in countries){
-                    val market = addMarker(
+                    val marker = addMarker(
                         MarkerOptions()
                             .position(LatLng(country.lat, country.long))
                             .title(country.name)
                     )
-                    market.tag = country.code
+                    marker.tag = country.code
 
                     val circle = addCircle(
                         CircleOptions()
@@ -49,28 +52,23 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                             .strokeColor(Color.parseColor("#434343"))
                             .fillColor(Color.parseColor("#2292000c"))
                     )
+
                     circle.isClickable = true
                     circle.tag = country.code
                 }
 
 
                 it.setOnCircleClickListener {circle ->
-                    circle.strokeColor = Color.BLUE
-                    circle.fillColor = Color.RED
-                    if (circle.tag!! == "A"){
-                        println()
-                    }
-                    onCircleTapped(circle)
+                    val country = CountryRepo.getCountryByCode(circle.tag.toString())
+                    Toast.makeText(context,"Selected country: $country.",Toast.LENGTH_SHORT).show()
+                }
+
+                it.setOnMarkerClickListener { marker ->
+                    marker.showInfoWindow()
+                    true
                 }
 
             }
-
-        }
-    }
-
-    private fun onCircleTapped(circle: Circle?) {
-        circle?.let {
-            val values = CountryRepo.getCountries()
 
         }
     }
