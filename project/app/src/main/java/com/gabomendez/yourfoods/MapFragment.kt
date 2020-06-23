@@ -28,30 +28,29 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(map: GoogleMap?) {
         map?.let {
-
             MapsInitializer.initialize(context)
             googleMap = it
-
             googleMap.apply {
-                val sydney = LatLng(-33.852, 151.211)
-                addMarker(
-                    MarkerOptions()
-                        .position(sydney)
-                        .title("Marker in Sydney")
-                )
 
                 val countries = CountryRepo.getCountries()
                 for(country in countries){
+                    val market = addMarker(
+                        MarkerOptions()
+                            .position(LatLng(country.lat, country.long))
+                            .title(country.name)
+                    )
+                    market.tag = country.code
+
                     val circle = addCircle(
                         CircleOptions()
                             .center(LatLng(country.lat, country.long))
                             .radius(country.radius) // In meters
                             .strokeWidth(4F)
                             .strokeColor(Color.parseColor("#434343"))
-                            .fillColor(Color.parseColor("#22571205"))
+                            .fillColor(Color.parseColor("#2292000c"))
                     )
                     circle.isClickable = true
-                    circle.tag = country.countryCode
+                    circle.tag = country.code
                 }
 
 

@@ -1,8 +1,8 @@
 package com.gabomendez.yourfoods.model
 
 data class Country(
-    var countryCode: String,
-    var contry: String,
+    var code: String,
+    var name: String,
     var lat: Double,
     var long: Double,
     var radius: Double
@@ -11,16 +11,16 @@ data class Country(
 object CountryRepo{
     fun getCountries(): MutableList<Country>{
         var ret = mutableListOf<Country>()
-        ret.add(Country(countryCode = "US", contry = "United States", lat = 39.9097, long = -101.9531, radius = 500000.0))
-        ret.add(Country(countryCode = "AW", contry = "Aruba", lat = 12.5123, long = -69.9801, radius = 500000.0))
-        ret.add(Country(countryCode = "CA", contry = "Canada", lat = 57.0407, long = -107.4023, radius = 500000.0))
-        ret.add(Country(countryCode = "GP", contry = "Guadalupe", lat = 16.1640, long = -61.6808, radius = 500000.0))
-        ret.add(Country(countryCode = "HK", contry = "Hong Kong", lat = 22.4259, long = 114.1251, radius = 500000.0))
-        ret.add(Country(countryCode = "KN", contry = "Saint Kitts and Nevis", lat = 17.3541, long = -62.7846, radius = 500000.0))
-        ret.add(Country(countryCode = "KY", contry = "Cayman Islands", lat = 19.3198, long = -81.2428, radius = 500000.0))
-        ret.add(Country(countryCode = "MX", contry = "Mexico", lat = 19.3526, long = -459.2065, radius = 500000.0))
-        ret.add(Country(countryCode = "SV", contry = "El Salvador", lat = 13.6353, long = -459.2065, radius = 500000.0))
-        ret.add(Country(countryCode = "VI", contry = "U.S. Virgin Islands", lat = 17.7291, long = -64.7843, radius = 500000.0))
+        ret.add(Country(code = "US", name = "United States", lat = 40.11168867, long = -101.86523438, radius = 850000.0))
+        ret.add(Country(code = "AW", name = "Aruba", lat = 12.51551982, long = -69.98145103, radius = 15000.0))
+        ret.add(Country(code = "CA", name = "Canada", lat = 59.97700549, long = -112.5, radius = 900000.0))
+        ret.add(Country(code = "GP", name = "Guadalupe", lat = 16.24631999, long = -61.5838623, radius = 40000.0))
+        ret.add(Country(code = "HK", name = "Hong Kong", lat = 22.36150647, long = 114.13009644, radius = 20000.0))
+        ret.add(Country(code = "KN", name = "Saint Kitts and Nevis", lat = 17.31983192, long = 297.2574234, radius = 15000.0))
+        ret.add(Country(code = "KY", name = "Cayman Islands", lat = 19.32021528, long = 278.75198364, radius = 15000.0))
+        ret.add(Country(code = "MX", name = "Mexico", lat = 23.07973176, long = -102.12890625, radius = 450000.0))
+        ret.add(Country(code = "SV", name = "El Salvador", lat = 13.60327813, long = -88.79150391, radius = 80000.0))
+        ret.add(Country(code = "VI", name = "U.S. Virgin Islands", lat = 17.73233683, long = 295.23593903, radius = 15000.0))
         return ret
     }
 }
