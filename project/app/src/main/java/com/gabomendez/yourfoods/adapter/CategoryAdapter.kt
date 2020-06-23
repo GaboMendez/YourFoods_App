@@ -75,9 +75,11 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
         private fun substringDescription(value: String?): String{
             var ret = value?.substringBefore("[")
-            if (ret!!.length > 199)
-                ret = ret.substring(0, 205)
+            ret = ret?.substringBefore("\n")
 
+            if (ret!!.length > 300){
+                ret = ret.substringBeforeLast(".") + "."
+            }
             return ret
         }
     }
