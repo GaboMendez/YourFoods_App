@@ -1,11 +1,12 @@
 package com.gabomendez.yourfoods.adapter
 
 import androidx.fragment.app.*
+import com.gabomendez.yourfoods.MapFragment
 import com.gabomendez.yourfoods.ui.category.CategoryFragment
 import com.gabomendez.yourfoods.ui.food.FoodFragment
 
 
-class PageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class PageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) { //FragmentPagerAdapter
 
     override fun getPageTitle(position: Int): CharSequence? {
         when (position){
@@ -14,6 +15,9 @@ class PageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
             }
             1 -> {
                 return "Category"
+            }
+            2 -> {
+                return "Restaurant"
             }
         }
         return super.getPageTitle(position)
@@ -27,13 +31,16 @@ class PageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
             1 -> {
                 CategoryFragment()
             }
+            2 -> {
+                MapFragment()
+            }
             else -> {
-                FoodFragment()
+                CategoryFragment()
             }
         }
     }
 
     override fun getCount(): Int {
-        return 2
+        return 3
     }
 }
