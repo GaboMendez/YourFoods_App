@@ -12,7 +12,7 @@ import retrofit2.Response
 class FoodPresenter: FoodContract.Presenter {
 
     private lateinit var view: FoodContract.View
-    private val retService: ApiService =  ServiceBuilder.buildService(ApiService::class.java)
+    private val retService: ApiService =  ServiceBuilder.buildService(ApiService::class.java, "Meal")
     private val subscriptions = CompositeDisposable()
     var listFoods = mutableListOf<Food>()
     var isRepeatingError = false

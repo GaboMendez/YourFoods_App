@@ -9,7 +9,7 @@ import retrofit2.Response
 
 class CategoryPresenter : CategoryContract.Presenter {
     private lateinit var view: CategoryContract.View
-    private val retService: ApiService =  ServiceBuilder.buildService(ApiService::class.java)
+    private val retService: ApiService =  ServiceBuilder.buildService(ApiService::class.java, "Meal")
     private val subscriptions = CompositeDisposable()
 
     override fun getData() {

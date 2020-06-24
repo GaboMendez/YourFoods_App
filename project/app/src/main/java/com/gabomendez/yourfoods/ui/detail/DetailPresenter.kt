@@ -10,7 +10,7 @@ import retrofit2.Response
 class DetailPresenter: DetailContract.Presenter  {
 
     private lateinit var view: DetailContract.View
-    private val retService: ApiService =  ServiceBuilder.buildService(ApiService::class.java)
+    private val retService: ApiService =  ServiceBuilder.buildService(ApiService::class.java, "Meal")
     private val subscriptions = CompositeDisposable()
 
     override fun getFoodData(foodID: String) {

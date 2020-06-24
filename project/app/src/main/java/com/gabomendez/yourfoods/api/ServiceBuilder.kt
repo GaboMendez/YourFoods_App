@@ -8,13 +8,23 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ServiceBuilder {
     private val client = OkHttpClient.Builder().build()
 
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(Constants.BASE_URL)
+    private val retrofitMeal = Retrofit.Builder()
+        .baseUrl(Constants.BASE_URL_MEAL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()
 
-    fun<T> buildService(service: Class<T>): T{
-        return retrofit.create(service)
+    private val retrofitRestaurant = Retrofit.Builder()
+        .baseUrl(Constants.BASE_URL_RESTAURANT)
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(client)
+        .build()
+
+    fun<T> buildService(service: Class<T>, baseURL: String): T{
+        return when(baseURL){
+            "Meal" -> retrofitMeal.create(service)
+            "Restaurant" -> retrofitRestaurant.create(service)
+            else -> retrofitMeal.create(service)
+        }
     }
 }
