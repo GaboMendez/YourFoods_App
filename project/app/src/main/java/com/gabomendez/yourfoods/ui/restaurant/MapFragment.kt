@@ -37,7 +37,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mapView.onResume()
         mapView.getMapAsync(this)
     }
-    
+
     override fun onMapReady(map: GoogleMap?) {
         map?.let {
             MapsInitializer.initialize(context)
@@ -129,6 +129,5 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         // Zoom out to zoom level 10, animating with a duration of 5 seconds.
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(zoomValue), 5000, null)
     }
-
 
 }
