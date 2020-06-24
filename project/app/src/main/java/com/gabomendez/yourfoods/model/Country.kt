@@ -1,5 +1,7 @@
 package com.gabomendez.yourfoods.model
 
+import com.google.android.gms.maps.model.LatLng
+
 data class Country(
     var code: String,
     var name: String,
@@ -24,7 +26,7 @@ object CountryRepo{
         return ret
     }
 
-    fun getCountryByCode(code: String): String{
+    fun getCountryByCode(code: String): String {
         return when(code){
             "US" -> "United States"
             "AW" -> "Aruba"
@@ -37,6 +39,22 @@ object CountryRepo{
             "SV" -> "Salvador"
             "VI" -> "U.S. Virgin Islands"
             else -> "Not Found..."
+        }
+    }
+
+    fun getLatLngByCode(code: String): LatLng? {
+        return when(code){
+            "US" -> LatLng(40.11168867, -101.86523438)
+            "AW" -> LatLng(12.51551982, -69.98145103)
+            "CA" -> LatLng(59.97700549, -112.5)
+            "GP" -> LatLng(16.24631999, -61.5838623)
+            "HK" -> LatLng(22.36150647, 114.13009644)
+            "KN" -> LatLng(17.31983192, 297.2574234)
+            "KY" -> LatLng(19.32021528, 278.75198364)
+            "MX" -> LatLng(23.07973176, -102.12890625)
+            "SV" -> LatLng(13.60327813, -88.79150391)
+            "VI" -> LatLng(17.73233683, 295.23593903)
+            else -> null
         }
     }
 }

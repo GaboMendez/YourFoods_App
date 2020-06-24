@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Your Foods</string>
-    <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">AIzaSyDjTGHswihq19iOtgYeQuCo5eZoe9qJ5ww</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDjTGHswihq19iOtgYeQuCo5eZoe9qJ5ww</string>
+
 </resources>
