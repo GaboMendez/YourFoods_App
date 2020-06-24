@@ -4,13 +4,25 @@
     android:id="@+id/restaurantContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
+    android:background="@color/colorBackground"
     tools:context=".ui.restaurant.RestaurantFragment">
+
+    <include
+        android:id="@+id/loadingBar"
+        layout="@layout/loading"
+        android:visibility="invisible" />
+
+    <include
+        android:id="@+id/layoutError"
+        layout="@layout/item_error"
+        android:visibility="invisible" />
 
     <TextView
         android:gravity="center"
+        android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:textColor="@color/colorWhite"
         android:text="Hey this is Restaurant Fragment" />
 
 </FrameLayout>
