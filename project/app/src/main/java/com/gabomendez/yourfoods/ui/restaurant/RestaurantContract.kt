@@ -6,11 +6,8 @@ import com.gabomendez.yourfoods.ui.base.BaseContract
 class RestaurantContract {
 
     interface View: BaseContract.BaseView {
-        fun showProgress()
-        fun hideProgress()
         fun onDomainSuccess(restaurants: MutableList<Restaurant>)
         fun onDomainError(msg: String)
-        fun retryRequest()
         fun refreshData()
     }
 

@@ -32,13 +32,6 @@ class CategoryPresenter : CategoryContract.Presenter {
         }
     }
 
-    override fun subscribe() {
-    }
-
-    override fun unsubscribe() {
-        subscriptions.clear()
-    }
-
     override fun attach(view: CategoryContract.View) {
         this.view = view
     }

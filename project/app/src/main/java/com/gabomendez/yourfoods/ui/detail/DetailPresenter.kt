@@ -33,13 +33,6 @@ class DetailPresenter: DetailContract.Presenter  {
         }
     }
 
-    override fun subscribe() {
-    }
-
-    override fun unsubscribe() {
-        subscriptions.clear()
-    }
-
     override fun attach(view: DetailContract.View) {
         this.view = view
     }

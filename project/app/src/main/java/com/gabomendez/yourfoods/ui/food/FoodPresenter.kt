@@ -13,7 +13,6 @@ class FoodPresenter: FoodContract.Presenter {
 
     private lateinit var view: FoodContract.View
     private val retService: ApiService =  ServiceBuilder.buildService(ApiService::class.java, "Meal")
-    private val subscriptions = CompositeDisposable()
     var listFoods = mutableListOf<Food>()
     var isRepeatingError = false
 
@@ -69,13 +68,6 @@ class FoodPresenter: FoodContract.Presenter {
                 }
             })
         }
-    }
-
-    override fun subscribe() {
-    }
-
-    override fun unsubscribe() {
-        subscriptions.clear()
     }
 
     override fun attach(view: FoodContract.View) {

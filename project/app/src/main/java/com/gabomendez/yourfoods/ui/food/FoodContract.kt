@@ -7,12 +7,9 @@ import com.gabomendez.yourfoods.ui.base.BaseContract
 class FoodContract {
 
     interface View: BaseContract.BaseView {
-        fun showProgress()
-        fun hideProgress()
         fun onFoodTapped(food: Food)
         fun onDomainSuccess(foods: MutableList<Food>)
         fun onDomainError(msg: String)
-        fun retryRequest()
         fun refreshData()
     }
 
