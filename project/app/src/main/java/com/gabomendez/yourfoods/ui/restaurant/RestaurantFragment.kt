@@ -43,10 +43,6 @@ class RestaurantFragment : Fragment(), RestaurantContract.View {
         TODO("Not yet implemented")
     }
 
-    override fun refreshData() {
-        TODO("Not yet implemented")
-    }
-
     companion object {
         @JvmStatic
         fun newInstance(countryCode: String) =

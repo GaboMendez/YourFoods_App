@@ -8,7 +8,6 @@ class RestaurantContract {
     interface View: BaseContract.BaseView {
         fun onDomainSuccess(restaurants: MutableList<Restaurant>)
         fun onDomainError(msg: String)
-        fun refreshData()
     }
 
     interface Presenter: BaseContract.BasePresenter<View>  {
