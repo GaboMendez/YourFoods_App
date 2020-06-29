@@ -1,13 +1,11 @@
 package com.gabomendez.yourfoods.ui.main
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.FragmentManager
 import com.gabomendez.yourfoods.R
 import com.gabomendez.yourfoods.adapter.PageAdapter
-import com.google.android.gms.maps.MapFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

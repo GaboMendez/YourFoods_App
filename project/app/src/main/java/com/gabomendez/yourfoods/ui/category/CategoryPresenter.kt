@@ -2,7 +2,6 @@ package com.gabomendez.yourfoods.ui.category
 
 import com.gabomendez.yourfoods.api.*
 import com.gabomendez.yourfoods.model.CategoryResponse
-import io.reactivex.disposables.CompositeDisposable
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -10,7 +9,6 @@ import retrofit2.Response
 class CategoryPresenter : CategoryContract.Presenter {
     private lateinit var view: CategoryContract.View
     private val retService: ApiService =  ServiceBuilder.buildService(ApiService::class.java, "Meal")
-    private val subscriptions = CompositeDisposable()
 
     override fun getData() {
         this.retService.let {

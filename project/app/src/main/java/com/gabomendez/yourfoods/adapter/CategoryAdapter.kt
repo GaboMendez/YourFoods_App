@@ -15,16 +15,17 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
     private val items = mutableListOf<Category>()
     private val itemClickListener: ((Category, Int) -> Unit)?
 
-    constructor() : super(){
+    constructor() : super() {
         itemClickListener = null
     }
 
-    constructor(itemClickListener: ((Category, Int) -> Unit)) : super(){
+    constructor(itemClickListener: ((Category, Int) -> Unit)) : super() {
         this.itemClickListener = itemClickListener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_category, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_category, parent, false)
         return ViewHolder(view)
     }
 
@@ -37,23 +38,24 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
         return items.size
     }
 
-    fun setFoods(categories: MutableList<Category>){
+    fun setFoods(categories: MutableList<Category>) {
         items.clear()
         items.addAll(categories)
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(item : View) : RecyclerView.ViewHolder(item){
+    inner class ViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         var category: Category? = null
-
-            set(value){
+            set(value) {
                 value?.let {
                     itemView.lblCategory.text = value.strCategory
-                    itemView.lblDescription.text = substringDescription(value.strCategoryDescription)
+                    itemView.lblDescription.text =
+                        substringDescription(value.strCategoryDescription)
 
                     value.strCategory?.let {
                         val baseColor = Category.getBaseColor(it)
-                        itemView.imgBase.background = ContextCompat.getDrawable(itemView.context, baseColor)
+                        itemView.imgBase.background =
+                            ContextCompat.getDrawable(itemView.context, baseColor)
                     }
 
                     Picasso.get()
@@ -66,18 +68,18 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
             }
 
         init {
-            itemView.setOnClickListener{
+            itemView.setOnClickListener {
                 category?.let {
                     itemClickListener?.invoke(category as Category, adapterPosition)
                 }
             }
         }
 
-        private fun substringDescription(value: String?): String{
+        private fun substringDescription(value: String?): String {
             var ret = value?.substringBefore("[")
             ret = ret?.substringBefore("\n")
 
-            if (ret!!.length > 300){
+            if (ret!!.length > 300) {
                 ret = ret.substringBeforeLast(".") + "."
             }
             return ret

@@ -3,7 +3,6 @@ package com.gabomendez.yourfoods.ui.food
 import com.gabomendez.yourfoods.model.Food
 import com.gabomendez.yourfoods.ui.base.BaseContract
 
-
 class FoodContract {
 
     interface View: BaseContract.BaseView {

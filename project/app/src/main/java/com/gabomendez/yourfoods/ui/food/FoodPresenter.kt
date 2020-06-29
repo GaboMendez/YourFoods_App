@@ -4,7 +4,6 @@ import com.gabomendez.yourfoods.api.ApiService
 import com.gabomendez.yourfoods.api.ServiceBuilder
 import com.gabomendez.yourfoods.model.Food
 import com.gabomendez.yourfoods.model.FoodResponse
-import io.reactivex.disposables.CompositeDisposable
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

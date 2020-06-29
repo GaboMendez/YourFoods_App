@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.app.SharedElementCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.gabomendez.yourfoods.R
@@ -69,7 +68,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
 
                 it.setOnCircleClickListener {circle ->
-                    val country = CountryRepo.getCountryByCode(circle.tag.toString())
+                    val country = CountryRepo.getCountryNameByCode(circle.tag.toString())
 
                     Toast.makeText(context,"Selected country: $country.",Toast.LENGTH_SHORT).show()
                     val coordinates = CountryRepo.getLatLngByCode(circle.tag.toString())

@@ -6,10 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.gabomendez.yourfoods.R
-import com.gabomendez.yourfoods.model.Restaurant
+import com.gabomendez.yourfoods.model.CountryRepo
+import com.gabomendez.yourfoods.model.Restaurants
 import kotlinx.android.synthetic.main.fragment_restaurant.*
+import kotlinx.android.synthetic.main.item_error.view.*
 
 class RestaurantFragment : Fragment(), RestaurantContract.View {
+
+    private lateinit var presenter: RestaurantPresenter
+
     private var countryCode: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +28,21 @@ class RestaurantFragment : Fragment(), RestaurantContract.View {
         return inflater.inflate(R.layout.fragment_restaurant, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        showProgress()
+        presenter = RestaurantPresenter()
+        presenter.attach(this)
+
+        countryCode?.let {
+            val country = CountryRepo.getCountryByCode(it)
+            presenter.getRestaurantData(country!!)
+        }
+
+        layoutError.btnTryAgain.setOnClickListener { retryRequest() }
+    }
+
     override fun showProgress() {
         loadingBar.visibility = View.VISIBLE
     }
@@ -31,12 +51,12 @@ class RestaurantFragment : Fragment(), RestaurantContract.View {
         loadingBar.visibility = View.INVISIBLE
     }
 
-    override fun onDomainSuccess(restaurants: MutableList<Restaurant>) {
-        TODO("Not yet implemented")
+    override fun onDomainSuccess(restaurants: MutableList<Restaurants>) {
+        hideProgress()
     }
 
     override fun onDomainError(msg: String) {
-        TODO("Not yet implemented")
+        hideProgress()
     }
 
     override fun retryRequest() {

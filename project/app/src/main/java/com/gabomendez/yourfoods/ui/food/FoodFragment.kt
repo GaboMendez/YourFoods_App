@@ -1,27 +1,22 @@
 package com.gabomendez.yourfoods.ui.food
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gabomendez.yourfoods.R
 import com.gabomendez.yourfoods.adapter.FoodAdapter
 import com.gabomendez.yourfoods.model.Food
-import com.gabomendez.yourfoods.ui.category.CategoryFragment
 import com.gabomendez.yourfoods.ui.detail.DetailFragment
 import com.gabomendez.yourfoods.util.AutoFitGridLayoutManager
 import kotlinx.android.synthetic.main.fragment_food.*
 import kotlinx.android.synthetic.main.fragment_food.view.*
 import kotlinx.android.synthetic.main.item_error.view.*
-import java.lang.IllegalArgumentException
 
 class FoodFragment : Fragment(), FoodContract.View {
 

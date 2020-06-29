@@ -10,7 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.gabomendez.yourfoods.R
 import com.gabomendez.yourfoods.adapter.IngredientAdapter
 import com.gabomendez.yourfoods.model.Food
@@ -41,7 +42,7 @@ class DetailFragment : Fragment(), DetailContract.View {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 
@@ -68,9 +69,9 @@ class DetailFragment : Fragment(), DetailContract.View {
         loadingBar.visibility = View.INVISIBLE
     }
 
-    override fun setMeasuresAndIngredients(food: Food){
+    override fun setMeasuresAndIngredients(food: Food) {
         val ret = mutableListOf<String>()
-        with(food){
+        with(food) {
             if (!strMeasure1.isNullOrBlank() && !strIngredient1.isNullOrBlank())
                 ret.add("$strMeasure1-$strIngredient1")
             if (!strMeasure2.isNullOrBlank() && !strIngredient2.isNullOrBlank())
@@ -120,8 +121,13 @@ class DetailFragment : Fragment(), DetailContract.View {
     }
 
     override fun onDomainSuccess(food: Food) {
-        with(food){
-            detailContainer.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorWhite));
+        with(food) {
+            detailContainer.setBackgroundColor(
+                ContextCompat.getColor(
+                    context!!,
+                    R.color.colorWhite
+                )
+            );
             actualFood = this
             layoutDetail.visibility = View.VISIBLE
             lblFood.text = strMeal
@@ -133,10 +139,10 @@ class DetailFragment : Fragment(), DetailContract.View {
             else
                 lblTags.visibility = View.INVISIBLE
 
-            if (!strYoutube.isNullOrBlank()){
+            if (!strYoutube.isNullOrBlank()) {
                 btnTutorial.setOnClickListener { showTutorial() }
                 btnTutorial.visibility = View.VISIBLE
-            }else
+            } else
                 btnTutorial.visibility = View.GONE
 
             Picasso.get()
@@ -152,11 +158,16 @@ class DetailFragment : Fragment(), DetailContract.View {
     override fun onDomainError(msg: String) {
         context?.let {
             view?.let {
-                detailContainer.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorBackground));
+                detailContainer.setBackgroundColor(
+                    ContextCompat.getColor(
+                        context!!,
+                        R.color.colorBackground
+                    )
+                );
                 layoutDetail.visibility = View.INVISIBLE
                 hideProgress()
                 layoutError.visibility = View.VISIBLE
-                Toast.makeText(this.context,msg, Toast.LENGTH_LONG).show()
+                Toast.makeText(this.context, msg, Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -167,7 +178,7 @@ class DetailFragment : Fragment(), DetailContract.View {
         presenter.getFoodData(foodID!!)
     }
 
-    override fun showInstructions(){
+    override fun showInstructions() {
         actualFood.let {
             val dialog = AlertDialog.Builder(context)
                 .setTitle("Instructions")
