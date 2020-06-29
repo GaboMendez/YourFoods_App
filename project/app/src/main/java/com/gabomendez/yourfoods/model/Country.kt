@@ -8,7 +8,7 @@ data class Country(
     var lat: Double,
     var long: Double,
     var radius: Double,
-    var colletion_id: String = "",
+    var colletion_id: String,
     var city_id: Int = 0
 )
 
@@ -17,46 +17,46 @@ object CountryRepo{
     fun getCountries(): MutableList<Country>{
         var ret = mutableListOf<Country>()
         ret.add(Country(code = "US", name = "United States", lat = 40.11168867, long = -101.86523438, radius = 850000.0, city_id = 280, colletion_id = "1"))
-        ret.add(Country(code = "AW", name = "Aruba", lat = 12.51551982, long = -69.98145103, radius = 15000.0))
-        ret.add(Country(code = "CA", name = "Canada", lat = 59.97700549, long = -112.5, radius = 900000.0))
-        ret.add(Country(code = "GP", name = "Guadalupe", lat = 16.24631999, long = -61.5838623, radius = 40000.0))
-        ret.add(Country(code = "HK", name = "Hong Kong", lat = 22.36150647, long = 114.13009644, radius = 20000.0))
-        ret.add(Country(code = "KN", name = "Saint Kitts and Nevis", lat = 17.31983192, long = 297.2574234, radius = 15000.0))
-        ret.add(Country(code = "KY", name = "Cayman Islands", lat = 19.32021528, long = 278.75198364, radius = 15000.0))
-        ret.add(Country(code = "MX", name = "Mexico", lat = 23.07973176, long = -102.12890625, radius = 450000.0))
-        ret.add(Country(code = "SV", name = "Salvador", lat = 13.60327813, long = -88.79150391, radius = 80000.0))
-        ret.add(Country(code = "VI", name = "U.S. Virgin Islands", lat = 17.73233683, long = 295.23593903, radius = 15000.0))
+        ret.add(Country(code = "AU", name = "Australia", lat = -23.6445242, long = 133.33007813, radius = 900000.0, city_id = 313, colletion_id = "1"))
+        ret.add(Country(code = "CA", name = "Canada", lat = 59.97700549, long = -112.5, radius = 900000.0, city_id = 295, colletion_id = "1"))
+        ret.add(Country(code = "BR", name = "Brazil", lat = -10.66060795, long = -51.15234375, radius = 1000000.0, city_id = 66, colletion_id = "1"))
+        ret.add(Country(code = "CL", name = "Chile", lat = -26.74561038, long = -69.69726563, radius = 100000.0, city_id = 83, colletion_id = "1"))
+        ret.add(Country(code = "IN", name = "India", lat = 22.83694592, long = 78.57421875, radius = 700000.0, city_id = 1, colletion_id = "1"))
+        ret.add(Country(code = "IE", name = "Ireland", lat = 52.93539666, long = -8.21777344, radius = 100000.0, city_id = 91, colletion_id = "1"))
+        ret.add(Country(code = "IT", name = "Italy", lat = 42.94033923, long = 12.56835938, radius = 200000.0, city_id = 257, colletion_id = "1"))
+        ret.add(Country(code = "NZ", name = "New Zealand", lat = -41.88592103, long = 172.37548828, radius = 250000.0, city_id = 71, colletion_id = "1"))
+        ret.add(Country(code = "ZA", name = "South Africa", lat = -30.80791068, long = 24.38964844, radius = 500000.0, city_id = 64, colletion_id = "1"))
+        ret.add(Country(code = "TR", name = "Turkey", lat = 38.95940879, long = 35.41992188, radius = 350000.0, city_id = 60, colletion_id = "1"))
+        ret.add(Country(code = "UK", name = "United Kingdom", lat = 55.02802211, long = -2.37304688, radius = 260000.0, city_id = 68, colletion_id = "1"))
+
         countryList = ret
         return ret
     }
 
     fun getCountryByCode(code: String): Country?{
+        var ret: Country? = null
         for (country in countryList){
-            return if (country.code == code)
-                country
-            else
-                null
+            if (country.code == code)
+                ret = country
         }
-        return null
+        return ret
     }
 
     fun getCountryNameByCode(code: String): String? {
+        var ret: String? = null
         for (country in countryList){
-            return if (country.code == code)
-                country.name
-            else
-                null
+            if (country.code == code)
+                ret = country.name
         }
-        return null
+        return ret
     }
 
     fun getLatLngByCode(code: String): LatLng? {
+        var ret: LatLng? = null
         for (country in countryList){
-            return if (country.code == code)
-                LatLng(country.lat, country.long)
-            else
-                null
+            if (country.code == code)
+                ret = LatLng(country.lat, country.long)
         }
-        return null
+        return ret
     }
 }

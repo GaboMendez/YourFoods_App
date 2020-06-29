@@ -42,7 +42,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             MapsInitializer.initialize(context)
             googleMap = it
             googleMap.apply {
-                val zoomZone = LatLngBounds(LatLng(-20.63278425, 233.4375), LatLng(71.30079292, 298.125))
+                val zoomZone = LatLngBounds(LatLng(-23.8858377, -120.234375), LatLng(55.77657302, -40.78125))
                 it.moveCamera(CameraUpdateFactory.newLatLngBounds(zoomZone, 0))
 
                 val countries = CountryRepo.getCountries()
@@ -108,16 +108,18 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private fun moveToLocation(location: LatLng, countryCode: String) {
         when(countryCode){
-            "US" -> zoomMapa(location, 5F)
-            "AW" -> zoomMapa(location, 10F)
-            "CA" -> zoomMapa(location, 4F)
-            "GP" -> zoomMapa(location, 9.5F)
-            "HK" -> zoomMapa(location, 10F)
-            "KN" -> zoomMapa(location, 10F)
-            "KY" -> zoomMapa(location, 10F)
-            "MX" -> zoomMapa(location, 6F)
-            "SV" -> zoomMapa(location, 8F)
-            "VI" -> zoomMapa(location, 10F)
+            "US" -> zoomMapa(location, 4.7F) //
+            "CA" -> zoomMapa(location, 4F) //
+            "AU" -> zoomMapa(location, 4f)
+            "BR" -> zoomMapa(location, 4.7f) //
+            "CL" -> zoomMapa(location, 6.5f) //
+            "IN" -> zoomMapa(location, 5f)
+            "IE" -> zoomMapa(location, 7f)
+            "IT" -> zoomMapa(location, 6.5f) //
+            "NZ" -> zoomMapa(location, 6f)
+            "ZA" -> zoomMapa(location, 5.6f)
+            "TR" -> zoomMapa(location, 5.4f)
+            "UK" -> zoomMapa(location, 6f)
         }
     }
 

@@ -18,10 +18,10 @@ class RestaurantPresenter: RestaurantContract.Presenter {
             call.enqueue(object : Callback<RestaurantResponse> {
                 override fun onResponse(call: Call<RestaurantResponse>, response: Response<RestaurantResponse>) {
                     if (response.isSuccessful){
-                        val restaurants = response.body()!!.restaurants
-
+                        val result = response.body()!!.restaurants
+                        val restaurants = result.filter { it.restaurant.featured_image.isNotEmpty() }
                         if (restaurants.count() > 1)
-                            view.onDomainSuccess(restaurants)
+                            view.onDomainSuccess(restaurants.toMutableList())
                     }
                 }
 
